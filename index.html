@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>オトナの夜のIQテスト | ★オルガグローバル★Presents</title>
 
-    <meta property="og:title" content="オトナの夜のIQテスト | オルガグローバルPresents">
+    <meta property="og:title" content="オトナの夜のIQテスト | ★オルガグローバル★Presents">
     <meta property="og:description" content="10問で分かる！あなたのオトナの夜の知識度は？">
     <meta property="og:image" content="https://zeroplus1234.github.io/night-iq/top-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
@@ -16,31 +16,22 @@
         body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--main-bg); color: #fff; text-align: center; margin: 0; padding: 20px; }
         .container { max-width: 500px; margin: auto; }
         .card { background: #1a1a1a; padding: 25px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 0 20px rgba(0,0,0,0.5); min-height: 300px; }
-        
-        /* メイン画像のデザイン */
         .top-banner { width: 100%; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 0 10px rgba(255, 0, 127, 0.3); }
-
         h1 { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); font-size: 20px; margin: 10px 0; }
         input { background: #333; border: 1px solid var(--neon-blue); color: #fff; padding: 12px; border-radius: 25px; width: 80%; text-align: center; margin-bottom: 20px; font-size: 16px; }
-        
         .btn { cursor: pointer; padding: 12px 24px; border-radius: 25px; font-weight: bold; transition: 0.3s; border: none; margin: 10px; display: inline-block; font-size: 16px; }
         .btn-start { background: var(--neon-pink); color: #fff; box-shadow: 0 0 15px var(--neon-pink); width: 80%; }
         .btn-o { background: var(--neon-pink); color: #fff; width: 100px; font-size: 24px; }
         .btn-x { background: var(--neon-blue); color: #000; width: 100px; font-size: 24px; }
         .btn-next { background: #fff; color: #000; width: 80%; margin-top: 20px; }
-
         #quizArea, #feedbackArea, #resultArea { display: none; }
         .question-text { font-size: 18px; line-height: 1.6; margin: 20px 0; min-height: 80px; display: flex; align-items: center; justify-content: center; }
-        
         .judge-text { font-size: 28px; font-weight: bold; margin-bottom: 10px; }
         .correct { color: var(--neon-blue); }
         .incorrect { color: var(--neon-pink); }
         .explanation-text { font-size: 15px; line-height: 1.6; background: #2a2a2a; padding: 15px; border-radius: 10px; text-align: left; }
-
-        /* 結果画像生成エリア（画面外） */
         #resultCaptureArea { position: absolute; left: -9999px; width: 1000px; height: 1000px; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; border: 10px solid var(--neon-pink); }
         .res-rank { font-size: 100px; font-weight: bold; color: var(--neon-pink); text-shadow: 0 0 30px var(--neon-pink); margin: 20px 0; }
-        
         #generatedImage { max-width: 100%; border-radius: 10px; box-shadow: 0 0 20px var(--neon-pink); margin-top: 20px; }
     </style>
 </head>
@@ -48,11 +39,9 @@
 
 <div class="container">
     <div id="startArea" class="card">
-        <img src="top-image.jpg" class="top-banner" alt="オトナの夜のIQテスト">
-        
+        <img src="top-image.jpg" class="top-banner" alt="メイン画像">
         <h1>オトナ♡の夜のIQテスト</h1>
         <p style="font-size: 14px; color: #ccc;">★オルガグローバル★Presents<br>10問で分かる！あなたのオトナ♡の夜の知識度は？</p>
-        
         <input type="text" id="userName" placeholder="名前を入力">
         <br>
         <button class="btn btn-start" onclick="startQuiz()">診断を開始する</button>
@@ -87,7 +76,7 @@
 
 <div id="resultCaptureArea">
     <div style="font-size:35px; margin-bottom:10px;" id="capName"></div>
-    <div style="font-size:45px; letter-spacing: 5px;">オトナ♡の夜のIQ診断結果</div>
+    <div style="font-size:45px; letter-spacing: 2px;">オトナ♡の夜のIQ診断結果</div>
     <div class="res-rank" id="capRank"></div>
     <div style="font-size:55px; color:var(--neon-blue); margin-bottom:20px;" id="capScore"></div>
     <div style="font-size:34px; width:85%; color:#ddd; line-height:1.4;" id="capDesc"></div>
@@ -96,23 +85,28 @@
 
 <script>
     let currentQ = 0; let score = 0; let userName = "";
+
     const quizData = [
-        { q: "「Netflix & Chill」（家で一緒にネットフリックス観よ）に誘われたら、純粋に映画を楽しむデートである。", a: false, ex: "×：これは世界共通の「お誘い」の合図。下心はあると考えて！" },
-        { q: "香水は、手首につけた後にゴシゴシ擦り合わせるのが、香りを長持ちさせる秘訣である。", a: false, ex: "×：擦ると香りの粒子が壊れ、本来の香りが立ちません。軽くトントンと叩くのが正解。" },
-        { q: "シャンパンのコルクを開ける時、「ポンッ！」と大きな音を派手に鳴らすのがマナーである。", a: false, ex: "×：静かに開けるのが上品。その音は「淑女の溜息」と呼ばれ、マナーとして重宝されます。" },
-        { q: "ラブホテルの「フリータイム」とは、ドリンクの飲み放題が付いている時間のことである。", a: false, ex: "×：サービスタイムの略。定額で長時間滞在できるお得なシステムのことです。" },
-        { q: "ラブホの自動精算機の音量が大きいのは、単に機械が古いからである。", a: false, ex: "×：廊下で他の客と鉢合わせないよう、周囲に「今、精算中ですよ」と知らせるための配慮です。" },
-        { q: "「酔っちゃった」と言う相手に対し、即座に「お水飲む？」と正論で返すのは、夜のIQが高い。", a: false, ex: "×：正論は時にムードを壊します。相手が何を求めているのかを察するのも大人のIQ。" },
-        { q: "コンドームを財布に入れて持ち歩くのは、ゴムの劣化を招くため避けるべきである。", a: true, ex: "〇：摩擦や体温でゴムが劣化し、破損の原因になります。専用のケースに入れましょう。" },
-        { q: "アルコールを飲むと「夜のパフォーマンス」が向上するというのは、医学的な事実である。", a: false, ex: "×：感覚が鈍り、脱水症状も進むため、実際には逆効果になることが多いです。" },
-        { q: "「生理中なら絶対に妊娠しない」という説は、医学的に100%正しい。", a: false, ex: "×：排卵周期のズレなどにより、生理中でも妊娠する可能性はゼロではありません。" },
-        { q: "デートの翌朝。相手から「昨日はありがとう」とLINEが来た際、あえて数時間おいてから返信するのが、相手を焦らせる高度な駆け引きである。", a: true, ex: "×：駆け引きよりも「安心感」が大事。特に楽しかった夜の後は、相手も不安になりやすいもの。起きてすぐに「こちらこそ最高に楽しかった！」とストレートに返すのが、結局は次のデートへの最短ルートです。" }
+        { q: "「体臭がいい匂い」と感じる相手とは、本能（遺伝子）レベルでの相性がいいと言える。", a: true, ex: "〇：自分と異なる免疫タイプを持つ相手の匂いを『快』と感じる仕組みがあり、生物学的に最高の相性です。" },
+        { q: "ラブホの自動精算機の音量が大きいのは、単に機械が古いからである。", a: false, ex: "×：廊下で他の客と鉢合わせないよう、周囲に「今、精算中ですよ」と知らせるためのプライバシーへの配慮です。" },
+        { q: "「酔っちゃった」と言う相手に対し、即座に「お水飲む？」と返してあげるのは、夜のIQが高い。", a: false, ex: "×：正論はムードを壊します。相手が何を求めているのかを察する余裕こそが大人のIQです。" },
+        { q: "コンドームを財布に入れて持ち歩くのは、夜のオトナのマナーである。", a: false, ex: "×：財布内の摩擦や体温でゴムが劣化し、破損の原因になります。専用のケースに入れましょう。" },
+        { q: "「生理中なら絶対に妊娠しない」という説は、医学的に100%正しい。", a: false, ex: "×：精子の生存期間や排卵周期のズレにより、生理中でも妊娠の可能性はゼロではありません。" },
+        { q: "セルフプレジャー（1人H）には、幸せホルモン分泌により肌をきれいにする効果がある。", a: true, ex: "〇：オキシトシンの分泌で血行が促進され、内側からツヤを与える「天然の美容液」効果が期待できます。" },
+        { q: "デートの翌朝。相手からのLINEに、あえて数時間おいてから返信するのが高度な駆け引きである。", a: false, ex: "×：駆け引きより「安心感」が大事。楽しかった夜の後は、すぐに素直な気持ちを返すのが最短ルートです。" },
+        { q: "寝る前のセルフプレジャーは交感神経を刺激して、睡眠を妨げる原因になる。", a: false, ex: "×：むしろ副交感神経が優位になり、深い眠りに導くリラックス効果（入眠儀式）があります。" },
+        { q: "ローションは「濡れにくい時」だけ使う補完アイテムであり、潤っているなら使う必要はない。", a: false, ex: "×：摩擦ダメージを防ぐだけでなく、感度を増幅させる役割があります。大人の嗜みとして併用が◎。" },
+        { q: "ある研究データによると、IQが高い女性ほど、性に対する関心が強く満足度も高い傾向にある。", a: true, ex: "〇：知的好奇心の強さがセクシャリティへの探求心にも繋がり、より豊かな夜を謳歌できると言われています。" }
     ];
 
     function startQuiz() {
+        // ★重要：開始時に変数を完全にリセット★
+        currentQ = 0;
+        score = 0;
         userName = document.getElementById('userName').value || "ゲスト";
         document.getElementById('startArea').style.display = 'none';
         document.getElementById('quizArea').style.display = 'block';
+        document.getElementById('resultArea').style.display = 'none';
         showQuestion();
     }
 
@@ -161,13 +155,12 @@
                 document.getElementById('downloadLink').href = imgData;
                 document.getElementById('loading').style.display = 'none';
                 
-                // ★Xシェア用のURLとテキスト★
                 const shareUrl = "https://zeroplus1234.github.io/night-iq/";
                 const tweetText = encodeURIComponent(
                     `${userName}さんの夜のIQは【${score}/10点】ランク：${rank}でした！\n\n` +
                     `※下の画像を保存して、このポストに添付してね！📸\n\n` +
                     `▼今すぐ測定！\n${shareUrl}\n` +
-                    `#大人の夜のIQ診断 #オルガグローバル`
+                    `#オトナの夜のIQ診断 #オルガグローバル`
                 );
                 document.getElementById('shareLink').href = `https://twitter.com/intent/tweet?text=${tweetText}`;
             });
@@ -176,5 +169,3 @@
 </script>
 </body>
 </html>
-
-
