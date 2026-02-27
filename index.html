@@ -3,49 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大人の夜のIQ診断 - 解説付き</title>
+    <title>夜の大人のIQテスト | オルガグローバルPresents</title>
+
+    <meta property="og:title" content="夜の大人のIQテスト | オルガグローバルPresents">
+    <meta property="og:description" content="10問で分かる！あなたの夜の社交リテラシーは？">
+    <meta property="og:image" content="https://zeroplus1234.github.io/night-iq/top-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        :root { --main-bg: #0d0d0d; --neon-pink: #ff007f; --neon-blue: #00f2ff; --correct: #28a745; --incorrect: #dc3545; }
+        :root { --main-bg: #0d0d0d; --neon-pink: #ff007f; --neon-blue: #00f2ff; }
         body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--main-bg); color: #fff; text-align: center; margin: 0; padding: 20px; }
         .container { max-width: 500px; margin: auto; }
-        .card { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 0 20px rgba(0,0,0,0.5); min-height: 300px; position: relative; }
-        
-        h1 { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); font-size: 24px; }
+        .card { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 0 20px rgba(0,0,0,0.5); min-height: 300px; }
+        h1 { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); font-size: 22px; }
         input { background: #333; border: 1px solid var(--neon-blue); color: #fff; padding: 12px; border-radius: 25px; width: 80%; text-align: center; margin-bottom: 20px; }
-        
         .btn { cursor: pointer; padding: 12px 24px; border-radius: 25px; font-weight: bold; transition: 0.3s; border: none; margin: 10px; display: inline-block; font-size: 16px; }
         .btn-start { background: var(--neon-pink); color: #fff; box-shadow: 0 0 15px var(--neon-pink); }
         .btn-o { background: var(--neon-pink); color: #fff; width: 100px; font-size: 24px; }
         .btn-x { background: var(--neon-blue); color: #000; width: 100px; font-size: 24px; }
         .btn-next { background: #fff; color: #000; width: 80%; margin-top: 20px; }
-
         #quizArea, #feedbackArea, #resultArea { display: none; }
         .question-text { font-size: 18px; line-height: 1.6; margin: 20px 0; min-height: 80px; }
-        
-        /* 解説エリアのスタイル */
         .judge-text { font-size: 28px; font-weight: bold; margin-bottom: 10px; }
         .correct { color: var(--neon-blue); }
         .incorrect { color: var(--neon-pink); }
         .explanation-text { font-size: 16px; line-height: 1.6; background: #2a2a2a; padding: 15px; border-radius: 10px; text-align: left; }
-
-        /* 画像生成エリア（隠し） */
         #resultCaptureArea { position: absolute; left: -9999px; width: 1000px; height: 1000px; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; border: 10px solid var(--neon-pink); }
         .res-rank { font-size: 100px; font-weight: bold; color: var(--neon-pink); text-shadow: 0 0 30px var(--neon-pink); }
         #generatedImage { max-width: 100%; border-radius: 10px; box-shadow: 0 0 20px var(--neon-pink); margin-top: 20px; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <div id="startArea" class="card">
-        <h1>大人の夜のIQ診断</h1>
-        <p>あなたの「夜の社交リテラシー」を<br>10問のクイズで測定します。</p>
+        <h1>夜の大人のIQテスト</h1>
+        <p>オルガグローバルPresents<br>10問で分かる！あなたの夜のIQてすと</p>
         <input type="text" id="userName" placeholder="名前を入力">
         <br>
         <button class="btn btn-start" onclick="startQuiz()">診断を開始する</button>
     </div>
-
     <div id="quizArea" class="card">
         <div id="qNum" style="color:#888;"></div>
         <div class="question-text" id="qText"></div>
@@ -54,13 +51,11 @@
             <button class="btn btn-x" onclick="checkAnswer(false)">×</button>
         </div>
     </div>
-
     <div id="feedbackArea" class="card">
         <div id="judge" class="judge-text"></div>
         <div class="explanation-text" id="exText"></div>
         <button class="btn btn-next" onclick="nextQuestion()">次へ進む</button>
     </div>
-
     <div id="resultArea" class="card">
         <h2>診断完了！</h2>
         <div id="loading">画像を生成中...</div>
@@ -81,21 +76,18 @@
 </div>
 
 <script>
-    let currentQ = 0;
-    let score = 0;
-    let userName = "";
-
+    let currentQ = 0; let score = 0; let userName = "";
     const quizData = [
-        { q: "「Netflix & Chill」に誘われたら、純粋に新作映画を楽しむのが正解である。", a: false, ex: "×：これは世界共通の「お誘い」の合図。ポップコーンを買って行くと空気が凍るかも。" },
+        { q: "「Netflix & Chill」（家でネットフリックス観よ）に誘われたら、純粋に新作映画を楽しむのが正解である。", a: false, ex: "×：これは世界共通の「お誘い」の合図。" },
         { q: "香水は、手首につけた後にゴシゴシ擦り合わせるのが、香りを長持ちさせる秘訣である。", a: false, ex: "×：擦ると香りの粒子が壊れ、本来の香りが立ちません。軽くトントンと叩くのが正解。" },
         { q: "シャンパンのコルクを開ける時、「ポンッ！」と大きな音を派手に鳴らすのがマナーである。", a: false, ex: "×：静かに開けるのが上品。その音は「淑女の溜息」と呼ばれ、マナーとして重宝されます。" },
         { q: "ラブホテルの「フリータイム」とは、ドリンクの飲み放題が付いている時間のことである。", a: false, ex: "×：サービスタイムの略。定額で長時間滞在できるお得なシステムのことです。" },
         { q: "ラブホの自動精算機の音量が大きいのは、単に機械が古いからである。", a: false, ex: "×：廊下で他の客と鉢合わせないよう、周囲に「今、精算中ですよ」と知らせるための配慮です。" },
-        { q: "「酔っちゃった」と言う相手に対し、即座に「お水飲む？」と正論で返すのは、夜のIQが高い。", a: false, ex: "×：正論は時にムードを壊します。相手が何を求めているのかを察するのも大人のIQ。" },
+        { q: "「酔っちゃった」と言う相手に対し、即座に「お水飲む？」と返すのは、夜のIQが高い。", a: false, ex: "×：正論は時にムードを壊します。相手が何を求めているのかを察するのも大人のIQ。" },
         { q: "コンドームを財布に入れて持ち歩くのは、ゴムの劣化を招くため避けるべきである。", a: true, ex: "〇：摩擦や体温でゴムが劣化し、破損の原因になります。専用のケースに入れましょう。" },
         { q: "アルコールを飲むと「夜のパフォーマンス」が向上するというのは、医学的な事実である。", a: false, ex: "×：感覚が鈍り、脱水症状も進むため、実際には逆効果になることが多いです。" },
         { q: "「生理中なら絶対に妊娠しない」という説は、医学的に100%正しい。", a: false, ex: "×：排卵周期のズレなどにより、生理中でも妊娠する可能性はゼロではありません。" },
-        { q: "デートの誘いで「明日休み？」と聞くのは、単なるシフト確認ではなく「お泊まりの打診」である可能性が高い。", a: true, ex: "〇：相手の翌日の予定を確認するのは、暗に『時間を気にしなくていいよね？』という確認です。" }
+        { q: "デートの翌朝。相手から「昨日はありがとう」とLINEが来た際、あえて数時間おいてから返信するのが、相手を焦らせる高度な駆け引きである。", a: true, ex: "×：駆け引きよりも「安心感」が大事。特に楽しかった夜の後は、相手も不安になりやすいもの。起きてすぐに「こちらこそ最高に楽しかった！」とストレートに返すのが、結局は次のデートへの最短ルートです。" }
     ];
 
     function startQuiz() {
@@ -104,40 +96,29 @@
         document.getElementById('quizArea').style.display = 'block';
         showQuestion();
     }
-
     function showQuestion() {
         document.getElementById('qNum').innerText = `第 ${currentQ + 1} 問 / 10`;
         document.getElementById('qText').innerText = quizData[currentQ].q;
         document.getElementById('quizArea').style.display = 'block';
         document.getElementById('feedbackArea').style.display = 'none';
     }
-
     function checkAnswer(userAns) {
         const isCorrect = (userAns === quizData[currentQ].a);
         if (isCorrect) { score++; }
-
         document.getElementById('quizArea').style.display = 'none';
         document.getElementById('feedbackArea').style.display = 'block';
-        
         const judge = document.getElementById('judge');
         judge.innerText = isCorrect ? "正解！" : "不正解...";
         judge.className = "judge-text " + (isCorrect ? "correct" : "incorrect");
         document.getElementById('exText').innerText = quizData[currentQ].ex;
     }
-
     function nextQuestion() {
         currentQ++;
-        if (currentQ < quizData.length) {
-            showQuestion();
-        } else {
-            showResult();
-        }
+        if (currentQ < quizData.length) { showQuestion(); } else { showResult(); }
     }
-
     function showResult() {
         document.getElementById('feedbackArea').style.display = 'none';
         document.getElementById('resultArea').style.display = 'block';
-
         let rank = ""; let desc = "";
         if (score === 10) { rank = "夜の帝王/女帝"; desc = "すべてはお見通し。悟りを開いた大人の鑑。"; }
         else if (score >= 8) { rank = "夜の熟練者"; desc = "酸いも甘いも噛み分けた、夜の社交界の住人。"; }
@@ -155,7 +136,14 @@
                 document.getElementById('generatedImage').src = imgData;
                 document.getElementById('downloadLink').href = imgData;
                 document.getElementById('loading').style.display = 'none';
-                const tweetText = encodeURIComponent(`${userName}さんの夜のIQは【${score}/10点】ランク：${rank}でした！\n#大人の夜のIQ診断`);
+                
+                // ★ツイート内容にURLを含める設定★
+                const shareUrl = "https://zeroplus1234.github.io/night-iq/";
+                const tweetText = encodeURIComponent(
+                    `${userName}さんの夜のIQは【${score}/10点】ランク：${rank}でした！\n\n` +
+                    `▼夜のIQを測定してみる\n${shareUrl}\n` +
+                    `#大人の夜のIQ診断 #オルガグローバル`
+                );
                 document.getElementById('shareLink').href = `https://twitter.com/intent/tweet?text=${tweetText}`;
             });
         }, 500);
