@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>夜の大人のIQテスト | ★オルガグローバル★Presents</title>
+    <title>オトナの夜のIQテスト | ★オルガグローバル★Presents</title>
 
-    <meta property="og:title" content="夜の大人のIQテスト | オルガグローバルPresents">
-    <meta property="og:description" content="10問で分かる！あなたの夜のオトナの知識度は？">
+    <meta property="og:title" content="オトナの夜のIQテスト | オルガグローバルPresents">
+    <meta property="og:description" content="10問で分かる！あなたのオトナの夜の知識度は？">
     <meta property="og:image" content="https://zeroplus1234.github.io/night-iq/top-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -48,10 +48,10 @@
 
 <div class="container">
     <div id="startArea" class="card">
-        <img src="top-image.jpg" class="top-banner" alt="夜の大人のIQテスト">
+        <img src="top-image.jpg" class="top-banner" alt="オトナの夜のIQテスト">
         
-        <h1>夜の大人のIQテスト</h1>
-        <p style="font-size: 14px; color: #ccc;">★オルガグローバル★Presents<br>10問で分かる！あなたの夜のオトナの知識度は？</p>
+        <h1>オトナ♡の夜のIQテスト</h1>
+        <p style="font-size: 14px; color: #ccc;">★オルガグローバル★Presents<br>10問で分かる！あなたのオトナ♡の夜の知識度は？</p>
         
         <input type="text" id="userName" placeholder="名前を入力">
         <br>
@@ -87,17 +87,17 @@
 
 <div id="resultCaptureArea">
     <div style="font-size:35px; margin-bottom:10px;" id="capName"></div>
-    <div style="font-size:45px; letter-spacing: 5px;">夜のIQ診断結果</div>
+    <div style="font-size:45px; letter-spacing: 5px;">オトナ♡の夜のIQ診断結果</div>
     <div class="res-rank" id="capRank"></div>
     <div style="font-size:55px; color:var(--neon-blue); margin-bottom:20px;" id="capScore"></div>
     <div style="font-size:34px; width:85%; color:#ddd; line-height:1.4;" id="capDesc"></div>
-    <div style="margin-top:60px; font-size:26px; color:#555;">#大人の夜のIQ診断 #オルガグローバル</div>
+    <div style="margin-top:60px; font-size:26px; color:#555;">#オトナの夜のIQ診断 @Orgaglobal</div>
 </div>
 
 <script>
     let currentQ = 0; let score = 0; let userName = "";
     const quizData = [
-        { q: "「Netflix & Chill」に誘われたら、純粋に新作映画を楽しむのが正解である。", a: false, ex: "×：これは世界共通の「お誘い」の合図。ポップコーンを買って行くと空気が凍るかも。" },
+        { q: "「Netflix & Chill」（家で一緒にネットフリックス観よ）に誘われたら、純粋に映画を楽しむデートである。", a: false, ex: "×：これは世界共通の「お誘い」の合図。下心はあると考えて！" },
         { q: "香水は、手首につけた後にゴシゴシ擦り合わせるのが、香りを長持ちさせる秘訣である。", a: false, ex: "×：擦ると香りの粒子が壊れ、本来の香りが立ちません。軽くトントンと叩くのが正解。" },
         { q: "シャンパンのコルクを開ける時、「ポンッ！」と大きな音を派手に鳴らすのがマナーである。", a: false, ex: "×：静かに開けるのが上品。その音は「淑女の溜息」と呼ばれ、マナーとして重宝されます。" },
         { q: "ラブホテルの「フリータイム」とは、ドリンクの飲み放題が付いている時間のことである。", a: false, ex: "×：サービスタイムの略。定額で長時間滞在できるお得なシステムのことです。" },
@@ -106,7 +106,7 @@
         { q: "コンドームを財布に入れて持ち歩くのは、ゴムの劣化を招くため避けるべきである。", a: true, ex: "〇：摩擦や体温でゴムが劣化し、破損の原因になります。専用のケースに入れましょう。" },
         { q: "アルコールを飲むと「夜のパフォーマンス」が向上するというのは、医学的な事実である。", a: false, ex: "×：感覚が鈍り、脱水症状も進むため、実際には逆効果になることが多いです。" },
         { q: "「生理中なら絶対に妊娠しない」という説は、医学的に100%正しい。", a: false, ex: "×：排卵周期のズレなどにより、生理中でも妊娠する可能性はゼロではありません。" },
-        { q: "デートの誘いで「明日休み？」と聞くのは、単なるシフト確認ではなく「お泊まりの打診」である可能性が高い。", a: true, ex: "〇：相手の翌日の予定を確認するのは、暗に『時間を気にしなくていいよね？』という確認です。" }
+        { q: "デートの翌朝。相手から「昨日はありがとう」とLINEが来た際、あえて数時間おいてから返信するのが、相手を焦らせる高度な駆け引きである。", a: true, ex: "×：駆け引きよりも「安心感」が大事。特に楽しかった夜の後は、相手も不安になりやすいもの。起きてすぐに「こちらこそ最高に楽しかった！」とストレートに返すのが、結局は次のデートへの最短ルートです。" }
     ];
 
     function startQuiz() {
@@ -147,7 +147,7 @@
         if (score === 10) { rank = "夜の帝王/女帝"; desc = "すべてはお見通し。悟りを開いた大人の鑑。"; }
         else if (score >= 8) { rank = "夜の熟練者"; desc = "酸いも甘いも噛み分けた、夜の社交界の住人。"; }
         else if (score >= 5) { rank = "健全な一般人"; desc = "ほどよく真面目。もう少し遊び心を持ってもいいかも。"; }
-        else { rank = "生まれたての小鹿"; desc = "危険がいっぱい！まずは「猫見ない？」に付いていかないこと。"; }
+        else { rank = "生まれたての小鹿"; desc = "危険がいっぱい！まずは「うちの猫見ない？」に付いていかないこと。"; }
 
         document.getElementById('capName').innerText = userName + " さんの";
         document.getElementById('capRank').innerText = rank;
@@ -176,4 +176,5 @@
 </script>
 </body>
 </html>
+
 
