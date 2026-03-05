@@ -148,15 +148,26 @@
         }
     }
 
-    function showResult() {
+   function showResult() {
         document.getElementById('feedbackArea').style.display = 'none';
         document.getElementById('resultArea').style.display = 'block';
-
         let rank = ""; let desc = "";
-        if (score === 10) { rank = "夜の帝王/女帝"; desc = "すべてはお見通し。悟りを開いた大人の鑑。"; }
-        else if (score >= 8) { rank = "夜の熟練者"; desc = "酸いも甘いも噛み分けた、夜の社交界の住人。"; }
-        else if (score >= 5) { rank = "健全な一般人"; desc = "ほどよく真面目。もう少し遊び心を持ってもいいかも。"; }
-        else { rank = "生まれたての小鹿"; desc = "危険がいっぱい！甘い言葉にすぐ付いていかないよう注意。"; }
+        if (score === 10) {
+            rank = "官能の雑学王";
+            desc = "詳しすぎて引くレベルの夜の賢者。その圧倒的な知識があれば、どんな夜もスマートにリードできるはず！";
+        }
+        else if (score >= 8) {
+            rank = "18禁エリート博士";
+            desc = "かなりのエロ偏差値の持ち主。隅から隅まで知り尽くしたその知識で、余裕のある大人の振る舞いができるタイプです。";
+        }
+        else if (score >= 5) {
+            rank = "健全なむっつりスケベ";
+            desc = "知識は人並み、煩悩は人一倍。もっと本能の赴くままに経験値を積めば、さらに魅力的な大人になれるはず！";
+        }
+        else {
+            rank = "奇跡の純白ピュアっ子";
+            desc = "夜の知識はこれから。まずは大人のマナーを1から学んで、素敵な夜の社交術を身につけましょう！";
+        }
 
         // キャプチャ用データ設定
         document.getElementById('capName').innerText = userName + " さんの";
@@ -203,6 +214,7 @@
 </script>
 </body>
 </html>
+
 
 
 
